@@ -25,6 +25,38 @@ class Channel:
         self.video_count = channel['items'][0]['statistics']['videoCount']
         self.view_count = channel['items'][0]['statistics']['viewCount']
 
+    def __str__(self):
+        """Возвращает название и ссылку на канал по шаблону."""
+        return f'{self.title} ({self.url})'
+
+    def __add__(self, other):
+        """Складывает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) + int(other.subscriber_count)
+
+    def __sub__(self, other):
+        """Вычитает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __gt__(self, other):
+        """Сравнивает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) > int(other.subscriber_count)
+
+    def __ge__(self, other):
+        """Сравнивает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) >= int(other.subscriber_count)
+
+    def __lt__(self, other):
+        """Сравнивает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) < int(other.subscriber_count)
+
+    def __le__(self, other):
+        """Сравнивает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) <= int(other.subscriber_count)
+
+    def __eq__(self, other):
+        """Сравнивает экземпляры класса по атрибуту subscriber_count."""
+        return int(self.subscriber_count) == int(other.subscriber_count)
+
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         youtube = build('youtube', 'v3', developerKey=API_KEY)
