@@ -15,7 +15,7 @@ class Video(Channel):
         video_response = yt_obj.videos().list(part='snippet,statistics,contentDetails,topicDetails',
                                               id=video_id).execute()
         self.video_title = video_response['items'][0]['snippet']['title']
-        self.video_url = 'https://www.youtube.com/watch?v=' + self.__video_id
+        self.video_url = 'https://youtu.be/' + self.__video_id
         self.view_count = video_response['items'][0]['statistics']['viewCount']
         self.like_count = video_response['items'][0]['statistics']['likeCount']
 
